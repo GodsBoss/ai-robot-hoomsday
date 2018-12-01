@@ -9,6 +9,7 @@ class Loop {
     if (this.running) {
       return false
     }
+    this.running = true
     this.step()
     return true
   }
