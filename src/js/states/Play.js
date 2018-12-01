@@ -47,7 +47,8 @@ function initLevel(game, level) {
         x: tile.col * 16 + gridOffset.x,
         y: tile.row * 16 + gridOffset.y,
         w: 16,
-        h: 16
+        h: 16,
+        z: 1000
       }
       const f = createTile[tile.type]
       if (typeof f === 'function') {
@@ -58,7 +59,21 @@ function initLevel(game, level) {
   )
 }
 
-const createTile = {}
+const createTile = {
+  "tile_source": (game, tile, obj) => {
+    game.objects.push(
+      {
+        type: `tile_direction_${tile.direction}`,
+        x: obj.x,
+        y: obj.y,
+        w: 16,
+        h: 16,
+        z: 2000
+      }
+    )
+  },
+  "tile_sink": (game, tile, obj) => {}
+}
 
 const clickActions = {
   "tile_exit": (state, game, obj) => {
