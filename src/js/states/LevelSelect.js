@@ -55,7 +55,7 @@ export default class LevelSelect extends State {
         selectLevel(game, clickedObj)
       }
       if (clickedObj.type === 'level_select_start') {
-        // TODO: Start level!
+        game.nextState('play')
       }
     }
   }
