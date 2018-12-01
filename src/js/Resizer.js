@@ -11,6 +11,7 @@ export default class Resizer {
 
   connect(window) {
     window.addEventListener('resize', (ev) => this.resize(ev.target), false)
+    return this
   }
 
   setMargin(horizontal, vertical) {
