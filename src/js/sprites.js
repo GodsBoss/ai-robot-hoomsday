@@ -1,3 +1,5 @@
+import { HORIZONTAL, VERTICAL } from './SpriteAtlas'
+
 const sprites = [].concat(
   [
     {
@@ -6,6 +8,15 @@ const sprites = [].concat(
       y: 0,
       w: 320,
       h: 200
+    },
+    {
+      type: "intro_panel",
+      x: 480,
+      y: 200,
+      w: 160,
+      h: 80,
+      frames: 5,
+      dir: VERTICAL
     }
   ],
   createLetterSprites()
