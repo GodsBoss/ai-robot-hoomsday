@@ -1,3 +1,4 @@
+import { filters, sortCriteria, sorted } from '../objects'
 import State from '../State'
 
 export default class Play extends State {
@@ -33,7 +34,24 @@ export default class Play extends State {
 
   tick(game) {}
 
-  invoke(game, event) {}
+  invoke(game, event) {
+    if (event.type === 'click') {
+      const clickedObj = sorted(sortCriteria.reversed(sortCriteria.byZ))(game.objects).find(filters.byPosition(event))
+      if (typeof clickedObj === 'undefined') {
+        return
+      }
+      const f = clickActions[clickedObj.type]
+      if (typeof f === 'function') {
+        f(game, clickedObj)
+      }
+    }
+  }
+}
+
+const clickActions = {
+  "tile_exit": (game, obj) => {
+    game.nextState('title')
+  }
 }
 
 const gridOffset = {
