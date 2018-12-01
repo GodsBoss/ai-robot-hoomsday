@@ -1,12 +1,12 @@
 import { EventListener as ScaledClickEventListener } from './click'
 import Game from './Game'
+import Intro from './states/Intro'
 import loader from './loader'
 import { start } from './Loop'
 import Renderer from './Renderer'
 import Resizer from './Resizer'
 import { SpriteAtlas } from './SpriteAtlas'
 import sprites from './sprites'
-import Title from './states/Title'
 import wait from './wait'
 
 window.addEventListener('load', init, false)
@@ -26,7 +26,7 @@ function init(e) {
     ],
     () => {
       const game = new Game()
-      game.nextState(new Title())
+      game.nextState(new Intro())
       start(
         (next) => {
           window.setTimeout(next, 1000 / TPS, next)
