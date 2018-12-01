@@ -124,6 +124,13 @@ const sprites = [].concat(
       h: 16,
       frames: 2,
       dir: HORIZONTAL
+    },
+    {
+      type: 'ai_robot',
+      x: 0,
+      y: 64,
+      w: 16,
+      h: 16
     }
   ],
   createLetterSprites()
