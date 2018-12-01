@@ -13,6 +13,10 @@ window.addEventListener('load', init, false)
 const TPS = 25
 
 function init(e) {
+  const size = {
+    width: 320,
+    height: 200
+  }
   const image = loader.image("gfx.png")
   wait(
     [
@@ -27,7 +31,7 @@ function init(e) {
         },
         () => game.tick()
       )
-      const canvas = createGUI()
+      const canvas = createGUI(size)
       const atlas = (new SpriteAtlas(image.element)).extractSprites(sprites)
       const renderer = new Renderer(canvas, atlas)
       start(
@@ -40,10 +44,10 @@ function init(e) {
   )
 }
 
-function createGUI() {
+function createGUI(size) {
   const gui = document.createElement('canvas')
-  gui.width = 320
-  gui.height = 200
+  gui.width = size.width
+  gui.height = size.height
   document.body.appendChild(gui)
   const css = document.createElement('style')
   css.type = "text/css"
