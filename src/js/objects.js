@@ -22,5 +22,7 @@ export const filters = {
   byPosition: (position) => (obj) => position.x >= obj.x && position.y >= obj.y && position.x <= obj.x + obj.w && position.y <= obj.y + obj.h,
   byType: (type) => (obj) => obj.type === type,
   // every takes other predicates and creates a conjunctional filter, essentially creating the intersection of the filtered results.
-  every: (...predicates) => (obj) => predicates.every((pred) => pred(obj))
+  every: (...predicates) => (obj) => predicates.every((pred) => pred(obj)),
+  // not negates another predicate.
+  not: (predicate) => (obj) => !predicate(obj)
 }
