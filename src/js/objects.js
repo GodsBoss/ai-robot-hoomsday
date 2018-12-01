@@ -24,5 +24,7 @@ export const filters = {
   // every takes other predicates and creates a conjunctional filter, essentially creating the intersection of the filtered results.
   every: (...predicates) => (obj) => predicates.every((pred) => pred(obj)),
   // not negates another predicate.
-  not: (predicate) => (obj) => !predicate(obj)
+  not: (predicate) => (obj) => !predicate(obj),
+  // every takes other predicates and creates a disjunctional filter, essentialy creating the union of the filtered results.
+  some: (...predicates) => (obj) => predicates.some((pred) => pred(obj))
 }
