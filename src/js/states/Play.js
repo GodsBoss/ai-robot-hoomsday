@@ -67,7 +67,24 @@ export default class Play extends State {
   }
 }
 
+function copyTiles(tiles) {
+  return tiles.map(
+    (tile) => {
+      const copiedTile = {}
+      Object.keys(tile).forEach(
+        (key) => copiedTile[key] = tile[key]
+      )
+      return copiedTile
+    }
+  )
+}
+
 function initLevel(game, level) {
+  game.data.playing.tiles = copyTiles(level.tiles)
+  tilesToObjects(game)
+}
+
+function tilesToObjects(game) {
   game.objects = []
   for(let column = 0; column < 18; column++) {
     for(let row = 0; row < 12; row++) {
@@ -80,7 +97,7 @@ function initLevel(game, level) {
       )
     }
   }
-  level.tiles.forEach(
+  game.data.playing.tiles.forEach(
     (tile) => {
       const obj = {
         type: tile.type,
