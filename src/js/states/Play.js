@@ -41,17 +41,24 @@ function initLevel(game, level) {
     }
   }
   level.tiles.forEach(
-    (tile) => game.objects.push(
-      {
+    (tile) => {
+      const obj = {
         type: tile.type,
         x: tile.col * 16 + gridOffset.x,
         y: tile.row * 16 + gridOffset.y,
         w: 16,
         h: 16
       }
-    )
+      const f = createTile[tile.type]
+      if (typeof f === 'function') {
+        f(tile, obj)
+      }
+      game.objects.push(obj)
+    }
   )
 }
+
+const createTile = {}
 
 const clickActions = {
   "tile_exit": (state, game, obj) => {
