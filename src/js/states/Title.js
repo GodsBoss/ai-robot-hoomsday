@@ -4,7 +4,7 @@ export default class Title extends State {
   init(game) {
     game.objects.push(
       {
-        key: "bg_title",
+        type: "bg_title",
         x: 0,
         y: 0,
         w: 320,

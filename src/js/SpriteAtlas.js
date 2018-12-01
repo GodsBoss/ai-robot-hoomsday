@@ -21,11 +21,12 @@ export class SpriteAtlas {
   extractSprite(spriteInfo) {
     let frames = typeof spriteInfo['frames'] === "number" ? spriteInfo['frames'] : 1
     let direction = typeof spriteInfo['dir'] !== "undefined" ? spriteInfo['dir'] : HORIZONTAL
-    if (typeof this.sprites[spriteInfo.key] !== "undefined") {
-      throw new Error(`Sprite key ${key} already used!`)
+    const type = spriteInfo.type
+    if (typeof this.sprites[type + '-0'] !== "undefined") {
+      throw new Error(`Sprite type ${type} already used!`)
     }
     for(let frame = 0; frame < frames; frame++) {
-      this.sprites[spriteInfo.key + '-' + frame] = {
+      this.sprites[spriteInfo.type + '-' + frame] = {
         image: createSprite(
           this.source,
           {
@@ -42,15 +43,15 @@ export class SpriteAtlas {
     return this
   }
 
-  getSprite(key, frame) {
-    const sprite = this.sprites[key + '-' + frame]
+  getSprite(type, frame) {
+    const sprite = this.sprites[type + '-' + frame]
     if (typeof sprite === 'undefined') {
       throw new Error(`Sprite key ${key} with frame ${frame} unknown`)
     }
     return sprite
   }
 
-  allIDs() {
+  allKeys() {
     const ids = []
     for(var id in this.sprites) {
       ids.push(id)
