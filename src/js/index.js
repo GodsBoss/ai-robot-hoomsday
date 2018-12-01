@@ -1,6 +1,8 @@
 import { EventListener as ScaledClickEventListener } from './click'
 import Game from './Game'
 import Intro from './states/Intro'
+import levels from './levels'
+import LevelSelect from './states/LevelSelect'
 import loader from './loader'
 import { start } from './Loop'
 import Renderer from './Renderer'
@@ -28,7 +30,8 @@ function init(e) {
     () => {
       const game = (new Game()).
         registerState('title', new Title()).
-        registerState('intro', new Intro())
+        registerState('intro', new Intro()).
+        registerState('level_select', new LevelSelect(levels))
       game.nextState('intro')
       start(
         (next) => {
