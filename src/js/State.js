@@ -4,4 +4,6 @@ export default class State{
 
   // tick is called every tick of the game if this is the current state.
   tick(game) {}
+
+  invoke(event) {}
 }

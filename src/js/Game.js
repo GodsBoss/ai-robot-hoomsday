@@ -21,4 +21,8 @@ export default class Game{
   tick() {
     this.state.tick(this)
   }
+
+  invoke(event) {
+    this.state.invoke(event)
+  }
 }
