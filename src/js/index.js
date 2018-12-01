@@ -2,6 +2,7 @@ import Game from './Game'
 import loader from './loader'
 import { start } from './Loop'
 import Renderer from './Renderer'
+import Resizer from './Resizer'
 import { SpriteAtlas } from './SpriteAtlas'
 import sprites from './sprites'
 import Title from './states/Title'
@@ -40,6 +41,15 @@ function init(e) {
         },
         () => renderer.render(game)
       )
+      const resizer = (new Resizer(size)).setMinimalFactor(2).setMargin(20, 10).connect(window)
+      resizer.setOnResize(
+        (factor) => {
+          renderer.setScaleFactor(factor)
+          canvas.width = size.width * factor
+          canvas.height = size.height * factor
+        }
+      )
+      resizer.resize(window)
     }
   )
 }
