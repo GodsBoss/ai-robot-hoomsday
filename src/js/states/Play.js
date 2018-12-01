@@ -8,10 +8,50 @@ export default class Play extends State {
   }
 
   init(game) {
+    game.data.playing = {
+      running: false
+    }
     initLevel(game, this.levels[game.data.levelToPlay])
   }
 
-  tick(game) {}
+  tick(game) {
+    if (game.data.playing.running) {
+      this.tickRunning(game)
+    }
+  }
+
+  tickRunning(game) {
+    game.objects.
+      filter(filters.byType('ai_robot')).
+      forEach(
+        (robot) => {
+          robot.x += directions[robot.direction].x * robotSpeedPerTick * 16
+          robot.y += directions[robot.direction].y * robotSpeedPerTick * 16
+        }
+      )
+    game.objects.
+      filter(filters.byType('tile_source')).
+      filter((source) => source.amount > 0).
+      forEach(
+        (source) => {
+          if (source.waitTime <= 0) {
+            source.amount--;
+            source.waitTime += 2 / robotSpeedPerTick;
+            game.objects.push(
+              {
+                type: 'ai_robot',
+                x: source.x,
+                y: source.y,
+                z: 3000,
+                direction: source.direction
+              }
+            )
+          } else {
+            source.waitTime--
+          }
+        }
+      )
+  }
 
   invoke(game, event) {
     if (event.type === 'click') {
@@ -72,6 +112,8 @@ const createTile = {
       }
     )
     obj.amount = tile.amount
+    obj.waitTime = 0
+    obj.direction = tile.direction
   },
   "tile_sink": (game, tile, obj) => {
     obj.amount = tile.amount
@@ -84,10 +126,41 @@ const clickActions = {
   },
   "tile_reset": (state, game, obj) => {
     initLevel(game, state.levels[game.data.levelToPlay])
+  },
+  "tile_start_stop": (state, game, obj) => {
+    if (game.data.playing.running) {
+
+    } else {
+
+    }
+    game.data.playing.running = !game.data.playing.running
+    obj.frame = game.data.playing.running ? 1 : 0
   }
 }
 
 const gridOffset = {
   x: 16,
   y: 4
+}
+
+// robotSpeedPerTick is the speed of robots, measured in grid fields / tick.
+const robotSpeedPerTick = 1 / 4
+
+const directions = {
+  up: {
+    x: 0,
+    y: -1
+  },
+  down: {
+    x: 0,
+    y: 1
+  },
+  left: {
+    x: -1,
+    y: 0
+  },
+  right: {
+    x: 1,
+    y: 0
+  }
 }
