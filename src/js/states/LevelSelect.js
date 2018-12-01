@@ -17,7 +17,6 @@ export default class LevelSelect extends State {
         h: 200
       }
     )
-    game.data.levelSelect = game.data.levelSelect || {}
     this.levels.forEach(
       (level, index) => {
         game.objects.push(
@@ -55,6 +54,7 @@ export default class LevelSelect extends State {
         selectLevel(game, clickedObj)
       }
       if (clickedObj.type === 'level_select_start') {
+        game.data.levelToPlay = clickedObj.levelIndex
         game.nextState('play')
       }
     }
