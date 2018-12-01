@@ -146,12 +146,11 @@ const clickActions = {
   },
   "tile_start_stop": (state, game, obj) => {
     if (game.data.playing.running) {
-
+      tilesToObjects(game)
     } else {
-
+      obj.frame = 1
     }
     game.data.playing.running = !game.data.playing.running
-    obj.frame = game.data.playing.running ? 1 : 0
   }
 }
 
