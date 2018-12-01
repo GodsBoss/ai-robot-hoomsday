@@ -14,14 +14,38 @@ export class ScaledSpriteAtlas {
     return this.sprites[key(type, frame)]
   }
 
+  all() {
+    const sprites = []
+    this.unscaledSpriteAtlas.all().forEach(
+      (unscaledSprite) => {
+        sprites.push(this.getSprite(unscaledSprite.type, unscaledSprite.frame))
+      }
+    )
+    return sprites
+  }
+
   allKeys() {
     return this.unscaledSpriteAtlas.allKeys()
   }
 
   createScaledSprite(type, frame) {
     this.sprites[key(type, frame)] = {
+      type: type,
+      frame: frame,
       image: scale(this.unscaledSpriteAtlas.getSprite(type, frame).image, this.factor)
     }
+  }
+
+  createAllScaledSprites() {
+    this.unscaledSpriteAtlas.all().forEach(
+      (sprite) => {
+        const k = key(sprite.type, sprite.frame)
+        if (typeof this.sprites[k] === 'undefined') {
+          return
+        }
+        this.sprites[k] = this.createScaledSprite(sprite.type, sprite.frame)
+      }
+    )
   }
 }
 
