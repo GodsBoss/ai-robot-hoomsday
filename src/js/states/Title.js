@@ -12,4 +12,10 @@ export default class Title extends State {
       }
     )
   }
+
+  invoke(game, event) {
+    if (event.type === 'click') {
+      game.nextState('level_select')
+    }
+  }
 }
