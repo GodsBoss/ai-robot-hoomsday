@@ -24,6 +24,13 @@ const sprites = [].concat(
       y: 16,
       w: 16,
       h: 16
+    },
+    {
+      type: "tile_block",
+      x: 16,
+      y: 16,
+      w: 16,
+      h: 16
     }
   ],
   createLetterSprites()
