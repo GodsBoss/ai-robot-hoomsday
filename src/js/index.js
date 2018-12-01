@@ -5,6 +5,7 @@ import levels from './levels'
 import LevelSelect from './states/LevelSelect'
 import loader from './loader'
 import { start } from './Loop'
+import Play from './states/Play'
 import Renderer from './Renderer'
 import Resizer from './Resizer'
 import { SpriteAtlas } from './SpriteAtlas'
@@ -31,7 +32,8 @@ function init(e) {
       const game = (new Game()).
         registerState('title', new Title()).
         registerState('intro', new Intro()).
-        registerState('level_select', new LevelSelect(levels))
+        registerState('level_select', new LevelSelect(levels)).
+        registerState('play', new Play(levels))
       game.nextState('intro')
       start(
         (next) => {
