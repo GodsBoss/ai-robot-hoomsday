@@ -22,11 +22,11 @@ export class SpriteAtlas {
     let frames = typeof spriteInfo['frames'] === "number" ? spriteInfo['frames'] : 1
     let direction = typeof spriteInfo['dir'] !== "undefined" ? spriteInfo['dir'] : HORIZONTAL
     const type = spriteInfo.type
-    if (typeof this.sprites[type + '-0'] !== "undefined") {
+    if (typeof this.sprites[key(type, 0)] !== "undefined") {
       throw new Error(`Sprite type ${type} already used!`)
     }
     for(let frame = 0; frame < frames; frame++) {
-      this.sprites[spriteInfo.type + '-' + frame] = {
+      this.sprites[key(spriteInfo.type, frame)] = {
         image: createSprite(
           this.source,
           {
@@ -44,7 +44,7 @@ export class SpriteAtlas {
   }
 
   getSprite(type, frame) {
-    const sprite = this.sprites[type + '-' + frame]
+    const sprite = this.sprites[key(type, frame)]
     if (typeof sprite === 'undefined') {
       throw new Error(`Sprite key ${key} with frame ${frame} unknown`)
     }
@@ -71,3 +71,7 @@ function createSprite(source, pos, size) {
 
 export const HORIZONTAL = { x: 1, y: 0 }
 export const VERTICAL = { x: 0, y: 0 }
+
+function key(type, frame) {
+  return `${key}-${frame}`
+}
