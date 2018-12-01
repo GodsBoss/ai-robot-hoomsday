@@ -24,11 +24,20 @@ export default class Renderer{
     this.context.fillStyle = '#000000'
     this.context.fillRect(0, 0, this.canvas.width, this.canvas.height)
 
-    game.objects.forEach(
+    const objects = game.objects.slice()
+    objects.sort(sortByZ)
+
+    objects.forEach(
       (obj) => {
         const frame = typeof obj.frame === 'number' ? obj.frame : 0
         this.context.drawImage(this.atlas.getSprite(obj.type, frame).image, obj.x * this.factor, obj.y * this.factor)
       }
     )
   }
+}
+
+function sortByZ(first, second) {
+  const firstZ = typeof first.z === 'number' ? first.z : 0
+  const secondZ = typeof second.z === 'number' ? second.z : 0
+  return firstZ - secondZ
 }
