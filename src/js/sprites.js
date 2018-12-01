@@ -62,14 +62,18 @@ const sprites = [].concat(
       x: 64,
       y: 16,
       w: 16,
-      h: 16
+      h: 16,
+      frames: 2,
+      dir: VERTICAL
     },
     {
       type: "tile_reset",
       x: 80,
       y: 16,
       w: 16,
-      h: 16
+      h: 16,
+      frames: 2,
+      dir: VERTICAL
     }
   ],
   createLetterSprites()
