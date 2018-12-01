@@ -74,6 +74,13 @@ const sprites = [].concat(
       h: 16
     },
     {
+      type: "tile_sink",
+      x: 32,
+      y: 32,
+      w: 16,
+      h: 16
+    },
+    {
       type: "tile_reset",
       x: 80,
       y: 16,
