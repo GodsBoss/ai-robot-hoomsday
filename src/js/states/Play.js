@@ -101,6 +101,8 @@ function tilesToObjects(game) {
     (tile) => {
       const obj = {
         type: tile.type,
+        col: tile.col,
+        row: tile.row,
         x: tile.col * 16 + gridOffset.x,
         y: tile.row * 16 + gridOffset.y,
         w: 16,
