@@ -1,8 +1,23 @@
+import { ScaledSpriteAtlas } from './ScaledSpriteAtlas'
+
 export default class Renderer{
   constructor(canvas, atlas) {
     this.canvas = canvas
     this.context = this.canvas.getContext('2d')
+    this.sourceAtlas = atlas
     this.atlas = atlas
+    this.atlases = {
+      1: atlas
+    }
+    this.factor = 1
+  }
+
+  setScaleFactor(factor) {
+    if (typeof this.atlases[factor] == 'undefined') {
+      this.atlases[factor] = new ScaledSpriteAtlas(this.sourceAtlas, factor)
+    }
+    this.atlas = this.atlases[factor]
+    this.factor = factor
   }
 
   render(game) {
@@ -12,7 +27,7 @@ export default class Renderer{
     game.objects.forEach(
       (obj) => {
         const frame = typeof obj.frame === 'number' ? obj.frame : 0
-        this.context.drawImage(this.atlas.getSprite(obj.type, frame).image, obj.x, obj.y)
+        this.context.drawImage(this.atlas.getSprite(obj.type, frame).image, obj.x * this.factor, obj.y * this.factor)
       }
     )
   }
