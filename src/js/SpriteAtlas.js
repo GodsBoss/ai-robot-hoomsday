@@ -72,6 +72,6 @@ function createSprite(source, pos, size) {
 export const HORIZONTAL = { x: 1, y: 0 }
 export const VERTICAL = { x: 0, y: 0 }
 
-function key(type, frame) {
+export function key(type, frame) {
   return `${key}-${frame}`
 }
