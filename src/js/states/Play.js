@@ -71,8 +71,11 @@ const createTile = {
         z: 2000
       }
     )
+    obj.amount = tile.amount
   },
-  "tile_sink": (game, tile, obj) => {}
+  "tile_sink": (game, tile, obj) => {
+    obj.amount = tile.amount
+  }
 }
 
 const clickActions = {
