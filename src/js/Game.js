@@ -23,6 +23,6 @@ export default class Game{
   }
 
   invoke(event) {
-    this.state.invoke(event)
+    this.state.invoke(this, event)
   }
 }
