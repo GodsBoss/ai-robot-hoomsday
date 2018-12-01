@@ -55,9 +55,11 @@ export class SpriteAtlas {
 
   all() {
     const sprites = []
-    for(var id in this.sprites) {
-      sprites.push(this.sprites[id])
-    }
+    Object.keys(this.sprites).forEach(
+      (key) => {
+        sprites.push(this.sprites[key])
+      }
+    )
     return sprites
   }
 
