@@ -7,17 +7,17 @@ const levels = [
     },
     tiles: [
       {
-        type: "exit",
+        type: "tile_exit",
         col: 2,
         row: 2
       },
       {
-        type: "reset",
+        type: "tile_reset",
         col: 3,
         row: 2
       },
       {
-        type: "start_stop",
+        type: "tile_start_stop",
         col: 4,
         row: 2
       }
@@ -31,17 +31,17 @@ const levels = [
     },
     tiles: [
       {
-        type: "exit",
+        type: "tile_exit",
         col: 2,
         row: 2
       },
       {
-        type: "reset",
+        type: "tile_reset",
         col: 3,
         row: 2
       },
       {
-        type: "start_stop",
+        type: "tile_start_stop",
         col: 4,
         row: 2
       }
