@@ -40,6 +40,8 @@ export default class Play extends State {
             game.objects.push(
               {
                 type: 'ai_robot',
+                col: source.col,
+                row: source.row,
                 x: source.x,
                 y: source.y,
                 z: 3000,
