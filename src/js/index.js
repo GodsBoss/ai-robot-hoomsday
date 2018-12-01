@@ -7,6 +7,7 @@ import Renderer from './Renderer'
 import Resizer from './Resizer'
 import { SpriteAtlas } from './SpriteAtlas'
 import sprites from './sprites'
+import Title from './states/Title'
 import wait from './wait'
 
 window.addEventListener('load', init, false)
@@ -25,8 +26,10 @@ function init(e) {
       image.load()
     ],
     () => {
-      const game = new Game()
-      game.nextState(new Intro())
+      const game = (new Game()).
+        registerState('title', new Title()).
+        registerState('intro', new Intro())
+      game.nextState('intro')
       start(
         (next) => {
           window.setTimeout(next, 1000 / TPS, next)

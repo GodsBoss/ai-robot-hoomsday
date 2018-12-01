@@ -10,12 +10,24 @@ export default class Game{
 
     // Initially, a NOP state.
     this.state = new State()
+
+    // All states this game knows.
+    this.states = {}
   }
 
-  nextState(state) {
-    this.state = state
+  registerState(id, state) {
+    this.states[id] = state
+    return this
+  }
+
+  nextState(id) {
+    const newState = this.states[id]
+    if (typeof newState === 'undefined') {
+      throw new Error(`Unknown state ${id}`)
+    }
+    this.state = newState
     this.objects = []
-    state.init(this)
+    this.state.init(this)
   }
 
   tick() {

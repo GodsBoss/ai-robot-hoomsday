@@ -31,7 +31,7 @@ export default class Intro extends State {
 
       game.data.introState.panel++
       if (game.data.introState.panel >= panelPositions.length) {
-        game.nextState(new Title())
+        game.nextState("title")
       }
     }
     game.objects.filter(
