@@ -17,6 +17,13 @@ const sprites = [].concat(
       h: 80,
       frames: 5,
       dir: VERTICAL
+    },
+    {
+      type: "tile_ground",
+      x: 0,
+      y: 16,
+      w: 16,
+      h: 16
     }
   ],
   createLetterSprites()
