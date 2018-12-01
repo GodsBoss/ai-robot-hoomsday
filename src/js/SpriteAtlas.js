@@ -49,6 +49,14 @@ export class SpriteAtlas {
     }
     return sprite
   }
+
+  allIDs() {
+    const ids = []
+    for(var id in this.sprites) {
+      ids.push(id)
+    }
+    return ids
+  }
 }
 
 function createSprite(source, pos, size) {
