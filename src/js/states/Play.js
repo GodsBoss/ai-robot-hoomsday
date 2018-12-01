@@ -25,8 +25,22 @@ export default class Play extends State {
       filter(filters.byType('ai_robot')).
       forEach(
         (robot) => {
-          robot.x += directions[robot.direction].x * robotSpeedPerTick * 16
-          robot.y += directions[robot.direction].y * robotSpeedPerTick * 16
+          const dir = directions[robot.direction]
+          robot.x += dir.x * robotSpeedPerTick * 16
+          robot.y += dir.y * robotSpeedPerTick * 16
+          const dist = {
+            col: (robot.x - gridOffset.x) / 16 - robot.col - dir.x,
+            row: (robot.y - gridOffset.y) / 16 - robot.row - dir.y
+          }
+          if (Math.abs(dist.col + dist.row) <= robotSpeedPerTick * 1.01) {
+            setGridPosition(
+              robot,
+              {
+                col: robot.col + dir.x,
+                row: robot.row + dir.y
+              }
+            )
+          }
         }
       )
     game.objects.
@@ -103,14 +117,11 @@ function tilesToObjects(game) {
     (tile) => {
       const obj = {
         type: tile.type,
-        col: tile.col,
-        row: tile.row,
-        x: tile.col * 16 + gridOffset.x,
-        y: tile.row * 16 + gridOffset.y,
         w: 16,
         h: 16,
         z: 1000
       }
+      setGridPosition(obj, tile)
       const f = createTile[tile.type]
       if (typeof f === 'function') {
         f(game, tile, obj)
@@ -118,6 +129,13 @@ function tilesToObjects(game) {
       game.objects.push(obj)
     }
   )
+}
+
+function setGridPosition(object, pos) {
+  object.col = pos.col
+  object.row = pos.row
+  object.x = pos.col * 16 + gridOffset.x
+  object.y = pos.row * 16 + gridOffset.y
 }
 
 const createTile = {
@@ -164,7 +182,7 @@ const gridOffset = {
 }
 
 // robotSpeedPerTick is the speed of robots, measured in grid fields / tick.
-const robotSpeedPerTick = 1 / 4
+const robotSpeedPerTick = 1 / 20
 
 const directions = {
   up: {
