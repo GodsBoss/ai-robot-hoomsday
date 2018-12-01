@@ -27,6 +27,8 @@ export class SpriteAtlas {
     }
     for(let frame = 0; frame < frames; frame++) {
       this.sprites[key(spriteInfo.type, frame)] = {
+        type: spriteInfo.type,
+        frame: frame,
         image: createSprite(
           this.source,
           {
