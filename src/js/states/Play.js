@@ -51,7 +51,7 @@ function initLevel(game, level) {
       }
       const f = createTile[tile.type]
       if (typeof f === 'function') {
-        f(tile, obj)
+        f(game, tile, obj)
       }
       game.objects.push(obj)
     }
