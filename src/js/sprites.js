@@ -90,7 +90,7 @@ const sprites = [].concat(
       dir: VERTICAL
     },
     {
-      type: "tile_up",
+      type: "tile_direction_up",
       x: 0,
       y: 48,
       w: 16,
@@ -99,7 +99,7 @@ const sprites = [].concat(
       dir: HORIZONTAL
     },
     {
-      type: "tile_right",
+      type: "tile_direction_right",
       x: 32,
       y: 48,
       w: 16,
@@ -108,7 +108,7 @@ const sprites = [].concat(
       dir: HORIZONTAL
     },
     {
-      type: "tile_down",
+      type: "tile_direction_down",
       x: 64,
       y: 48,
       w: 16,
@@ -117,7 +117,7 @@ const sprites = [].concat(
       dir: HORIZONTAL
     },
     {
-      type: "tile_left",
+      type: "tile_direction_left",
       x: 96,
       y: 48,
       w: 16,
