@@ -1,3 +1,4 @@
+import { EventListener as ScaledClickEventListener } from './click'
 import Game from './Game'
 import loader from './loader'
 import { start } from './Loop'
@@ -33,6 +34,15 @@ function init(e) {
         () => game.tick()
       )
       const canvas = createGUI(size)
+      const clickListener = new ScaledClickEventListener()
+      canvas.addEventListener(
+        'click',
+        clickListener.asListener(),
+        false
+      )
+      clickListener.setCallback(
+        (x, y) => game.invoke({ type: "click", x: x, y: y})
+      )
       const atlas = (new SpriteAtlas(image.element)).extractSprites(sprites)
       const renderer = new Renderer(canvas, atlas)
       start(
@@ -47,6 +57,7 @@ function init(e) {
           renderer.setScaleFactor(factor)
           canvas.width = size.width * factor
           canvas.height = size.height * factor
+          clickListener.setScaled(factor)
         }
       )
       resizer.resize(window)
