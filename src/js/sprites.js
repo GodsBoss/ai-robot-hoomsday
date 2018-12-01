@@ -40,6 +40,13 @@ const sprites = [].concat(
       h: 16,
       frames: 2,
       dir: HORIZONTAL
+    },
+    {
+      type: "tile_exit",
+      x: 64,
+      y: 16,
+      w: 16,
+      h: 16
     }
   ],
   createLetterSprites()
