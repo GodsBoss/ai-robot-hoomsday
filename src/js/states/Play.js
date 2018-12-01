@@ -21,7 +21,7 @@ export default class Play extends State {
       }
       const f = clickActions[clickedObj.type]
       if (typeof f === 'function') {
-        f(game, clickedObj)
+        f(this, game, clickedObj)
       }
     }
   }
@@ -54,8 +54,11 @@ function initLevel(game, level) {
 }
 
 const clickActions = {
-  "tile_exit": (game, obj) => {
+  "tile_exit": (state, game, obj) => {
     game.nextState('title')
+  },
+  "tile_reset": (state, game, obj) => {
+    initLevel(game, state.levels[game.data.levelToPlay])
   }
 }
 
