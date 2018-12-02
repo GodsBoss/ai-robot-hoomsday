@@ -56,6 +56,13 @@ const sprites = [].concat(
       h: 16
     },
     {
+      type: "tile_block_wreck",
+      x: 48,
+      y: 16,
+      w: 16,
+      h: 16
+    },
+    {
       type: "tile_movable_block",
       x: 128,
       y: 16,
