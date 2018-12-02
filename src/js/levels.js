@@ -380,6 +380,53 @@ const levels = [
         row: 10
       }
     ]
+  },
+  {
+    id: "tutorial_4_stop",
+    position: {
+      x: 160,
+      y: 40
+    },
+    tiles: [
+      {
+        type: "tile_source",
+        col: 8,
+        row: 8,
+        amount: 3,
+        direction: "up"
+      },
+      {
+        type: "tile_sink",
+        col: 12,
+        row: 6,
+        amount: 2
+      },
+      {
+        type: "tile_movable_stop",
+        col: 4,
+        row: 4
+      },
+      {
+        type: "tile_start_stop",
+        col: 4,
+        row: 10
+      },
+      {
+        type: "tile_reset",
+        col: 5,
+        row: 10
+      },
+      {
+        type: "tile_exit",
+        col: 6,
+        row: 10
+      },
+      {
+        type: "tile_help",
+        col: 7,
+        row: 10
+      }
+    ]
   }
 ]
 
