@@ -28,7 +28,7 @@ export default class Renderer{
     sorted(sortCriteria.byZ)(game.objects).forEach(
       (obj) => {
         const frame = typeof obj.frame === 'number' ? obj.frame : 0
-        this.context.drawImage(this.atlas.getSprite(obj.type, frame).image, Math.round(obj.x) * this.factor, Math.round(obj.y) * this.factor)
+        this.context.drawImage(this.atlas.getSprite(obj.type, frame).image, Math.round(obj.x * this.factor), Math.round(obj.y * this.factor))
       }
     )
   }
