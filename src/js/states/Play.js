@@ -355,6 +355,7 @@ const clickActions = {
   "move_marker": (state, game, obj) => {
     setGridPosition(game.data.playing.chosenForMove, obj)
     removeMoveMarkers(game)
+    delete game.data.playing.chosenForMove
   },
   "tile_exit": (state, game, obj) => {
     if (obj.frame !== 1) {
@@ -418,6 +419,12 @@ function xableClickables(game, frame) {
 
 function startMoveTile(state, game, obj) {
   if (game.data.playing.running) {
+    return
+  }
+  removeMoveMarkers(game) // Remove (possibly) existing markers.
+  if (game.data.playing.chosenForMove === obj) {
+    // Cancel movement when the same object currently 'in move' is clicked.
+    delete game.data.playing.chosenForMove
     return
   }
   const occupyingTiles = game.objects.filter(
