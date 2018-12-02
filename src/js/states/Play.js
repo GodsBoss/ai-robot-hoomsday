@@ -18,6 +18,7 @@ export default class Play extends State {
     if (game.data.playing.running) {
       this.tickRunning(game)
     }
+    fadeHelpCursors(game)
   }
 
   tickRunning(game) {
@@ -38,6 +39,28 @@ export default class Play extends State {
       }
     }
   }
+}
+
+function fadeHelpCursors(game) {
+  game.objects.filter(
+    filters.byType('help_cursor')
+  ).forEach(
+    (cursor) => {
+      cursor.lifetime--
+      cursor.frame = 0
+      if (cursor.lifetime > startCursorLifeTime * 1/3 && cursor.lifetime < startCursorLifeTime * 2/3) {
+        cursor.frame = 1
+      }
+    }
+  )
+  game.objects = game.objects.filter(
+    (obj) => {
+      if (obj.type === 'help_cursor') {
+        return obj.lifetime > 0
+      }
+      return true
+    }
+  )
 }
 
 function checkForVictory(game) {
@@ -333,6 +356,37 @@ const clickActions = {
       game.nextState('title')
     }
   },
+  "tile_help": (state, game, obj) => {
+    if (obj.frame === 1) {
+      return
+    }
+    game.objects = game.objects.filter(
+      filters.not(
+        filters.byType('help_cursor')
+      )
+    )
+    console.log(game.objects)
+    console.log(game.objects.filter(
+      filters.byTypes(...Object.keys(clickActions))
+    ))
+    game.objects.filter(
+      filters.byTypes(...Object.keys(clickActions))
+    ).forEach(
+      (obj) => {
+        console.log(obj)
+        game.objects.push(
+          {
+            type: "help_cursor",
+            x: obj.x + 5,
+            y: obj.y + 5,
+            frame: 0,
+            lifetime: startCursorLifeTime,
+            z: 10000
+          }
+        )
+      }
+    )
+  },
   "tile_reset": (state, game, obj) => {
     if (obj.frame !== 1) {
       initLevel(game, state.levels[game.data.levelToPlay])
@@ -397,3 +451,5 @@ const obstacleCollisionTurns = {
 function byGridPosition(col, row) {
   return (tile) => typeof tile.col === 'number' && typeof tile.row === 'number' && tile.col === col && tile.row === row
 }
+
+const startCursorLifeTime = 20
