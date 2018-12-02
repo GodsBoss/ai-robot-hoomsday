@@ -197,7 +197,7 @@ const fieldActions = {
       game.objects.filter(
         filters.byType('tile_cracked_block')
       ).filter(
-        (block) => Math.abs(robot.col - block.col) <= 1 && Math.abs(robot.row - block.row)
+        (block) => Math.abs(robot.col - block.col) <= 1 && Math.abs(robot.row - block.row) <= 1
       ).forEach(
         (block) => {
           game.objects = game.objects.filter(
