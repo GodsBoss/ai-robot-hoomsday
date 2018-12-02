@@ -439,6 +439,7 @@ function startMoveTile(state, game, obj) {
   if (game.data.playing.chosenForMove === obj) {
     // Cancel movement when the same object currently 'in move' is clicked.
     delete game.data.playing.chosenForMove
+    xableClickables(game, true, false)
     return
   }
   xableClickables(game, false, false)
