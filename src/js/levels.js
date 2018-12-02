@@ -57,7 +57,7 @@ const levels = [
     ]
   },
   {
-    id: "tutorial_2_just_start",
+    id: "tutorial_2_multiple_stuff",
     position: {
       x: 40,
       y: 40
