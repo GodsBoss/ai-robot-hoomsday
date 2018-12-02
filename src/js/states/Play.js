@@ -135,6 +135,7 @@ const fieldActions = {
       return true
     }
     tile.amount--
+    replaceAmountMarker(game, tile)
     if (tile.amount <= 0) {
       tile.frame = 1
     }
@@ -203,6 +204,7 @@ function produceRobots(game) {
               direction: source.direction
             }
           )
+          replaceAmountMarker(game, source)
         } else {
           source.waitTime--
         }
@@ -280,10 +282,31 @@ const createTile = {
     obj.amount = tile.amount
     obj.waitTime = 0
     obj.direction = tile.direction
+    replaceAmountMarker(game, obj)
   },
   "tile_sink": (game, tile, obj) => {
     obj.amount = tile.amount
+    replaceAmountMarker(game, obj)
   }
+}
+
+function replaceAmountMarker(game, obj) {
+  if (typeof obj.amountMarker !== 'undefined') {
+    game.objects = game.objects.filter(filters.not(filters.is(obj.amountMarker)))
+  }
+  if (obj.amount <= 0) {
+    return
+  }
+  const marker = {
+    type: `letter_${obj.amount}`,
+    x: obj.x + 5,
+    y: obj.y + 5,
+    w: 5,
+    h: 5,
+    z: 3000
+  }
+  game.objects.push(marker)
+  obj.amountMarker = marker
 }
 
 const clickActions = {
