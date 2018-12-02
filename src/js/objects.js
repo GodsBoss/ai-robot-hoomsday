@@ -21,6 +21,7 @@ export const filters = {
   // byPosition assumes every object is square.
   byPosition: (position) => (obj) => position.x >= obj.x && position.y >= obj.y && position.x <= obj.x + obj.w && position.y <= obj.y + obj.h,
   byType: (type) => (obj) => obj.type === type,
+  byTypes: (...types) => (obj) => types.some((type) => type === obj.type),
   // every takes other predicates and creates a conjunctional filter, essentially creating the intersection of the filtered results.
   every: (...predicates) => (obj) => predicates.every((pred) => pred(obj)),
   // not negates another predicate.
