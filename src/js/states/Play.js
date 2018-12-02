@@ -194,6 +194,24 @@ const fieldActions = {
           z: 2000
         }
       )
+      game.objects.filter(
+        filters.byType('tile_cracked_block')
+      ).filter(
+        (block) => Math.abs(robot.col - block.col) <= 1 && Math.abs(robot.row - block.row)
+      ).forEach(
+        (block) => {
+          game.objects = game.objects.filter(
+            filters.not(filters.is(block))
+          )
+          game.objects.push(
+            {
+              type: 'tile_block_wreck',
+              x: block.x,
+              y: block.y
+            }
+          )
+        }
+      )
       return false
     }
   ),
