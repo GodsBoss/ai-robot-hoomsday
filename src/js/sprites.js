@@ -163,7 +163,7 @@ const sprites = [].concat(
     },
     {
       type: 'tile_movable_bomb',
-      x: 64,
+      x: 96,
       y: 16,
       w: 16,
       h: 16
