@@ -166,7 +166,7 @@ const sprites = [].concat(
       w: 14,
       h: 17,
       frames: 2,
-      direction: HORIZONTAL
+      dir: HORIZONTAL
     },
     {
       type: 'move_marker',
