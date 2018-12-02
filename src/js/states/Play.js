@@ -295,7 +295,7 @@ const gridOffset = {
 }
 
 // robotSpeedPerTick is the speed of robots, measured in grid fields / tick.
-const robotSpeedPerTick = 1 / 20
+const robotSpeedPerTick = 1 / 8
 
 const directions = {
   up: {
