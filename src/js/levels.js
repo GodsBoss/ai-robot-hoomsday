@@ -761,6 +761,144 @@ const levels = [
         row: 1
       }
     ]
+  },
+  {
+    id: "norml_bombs_1",
+    position: {
+      x: 280,
+      y: 40
+    },
+    tiles: [
+      {
+        type: "tile_start_stop",
+        col: 0,
+        row: 8
+      },
+      {
+        type: "tile_reset",
+        col: 0,
+        row: 9
+      },
+      {
+        type: "tile_exit",
+        col: 0,
+        row: 10
+      },
+      {
+        type: "tile_help",
+        col: 0,
+        row: 11
+      },
+      {
+        type: "tile_block",
+        col: 0,
+        row: 2
+      },
+      {
+        type: "tile_source",
+        col: 1,
+        row: 3,
+        direction: "right",
+        amount: 4
+      },
+      {
+        type: "tile_block",
+        col: 3,
+        row: 0
+      },
+      {
+        type: "tile_cracked_block",
+        col: 5,
+        row: 2
+      },
+      {
+        type: "tile_cracked_block",
+        col: 5,
+        row: 3
+      },
+      {
+        type: "tile_cracked_block",
+        col: 5,
+        row: 4
+      },
+      {
+        type: "tile_block",
+        col: 7,
+        row: 1
+      },
+      {
+        type: "tile_cracked_block",
+        col: 7,
+        row: 2
+      },
+      {
+        type: "tile_cracked_block",
+        col: 7,
+        row: 3
+      },
+      {
+        type: "tile_cracked_block",
+        col: 7,
+        row: 4
+      },
+      {
+        type: "tile_sink",
+        col: 9,
+        row: 1,
+        amount: 2
+      },
+      {
+        type: "tile_block",
+        col: 4,
+        row: 7
+      },
+      {
+        type: "tile_block",
+        col: 6,
+        row: 6
+      },
+      {
+        type: "tile_block",
+        col: 8,
+        row: 8
+      },
+      {
+        type: "tile_block",
+        col: 9,
+        row: 9
+      },
+      {
+        type: "tile_block",
+        col: 10,
+        row: 5
+      },
+      {
+        type: "tile_block",
+        col: 11,
+        row: 7
+      },
+      {
+        type: "tile_block",
+        col: 12,
+        row: 3
+      },
+      {
+        type: "tile_movable_arrow",
+        col: 9,
+        row: 3,
+        direction: "up"
+      },
+      {
+        type: "tile_movable_bomb",
+        col: 6,
+        row: 2
+      },
+      {
+        type: "tile_movable_bomb",
+        col: 1,
+        row: 6
+      }
+    ]
   }
 ]
 
