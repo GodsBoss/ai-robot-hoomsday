@@ -365,15 +365,10 @@ const clickActions = {
         filters.byType('help_cursor')
       )
     )
-    console.log(game.objects)
-    console.log(game.objects.filter(
-      filters.byTypes(...Object.keys(clickActions))
-    ))
     game.objects.filter(
       filters.byTypes(...Object.keys(clickActions))
     ).forEach(
       (obj) => {
-        console.log(obj)
         game.objects.push(
           {
             type: "help_cursor",
