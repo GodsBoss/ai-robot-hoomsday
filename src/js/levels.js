@@ -53,6 +53,11 @@ const levels = [
         col: 12,
         row: 5,
         amount: 5
+      },
+      {
+        type: "tile_help",
+        col: 16,
+        row: 2
       }
     ]
   },
