@@ -343,7 +343,7 @@ const clickActions = {
       tilesToObjects(game)
     } else {
       game.objects.
-        filter(filters.byTypes("tile_exit", "tile_reset", "tile_start_stop")).
+        filter(filters.byTypes("tile_exit", "tile_reset", "tile_start_stop", "tile_help")).
         forEach(
           (tile) => tile.frame = 1
         )
