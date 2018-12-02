@@ -41,6 +41,33 @@ export default class Play extends State {
 
 function tickRobots(game) {
   const movedRobots = moveRobots(game)
+  const deadRobots = []
+  movedRobots.forEach(
+    (robot) => {
+      const survivedField = handleFieldEvent(game, robot)
+      if (!survivedField) {
+        deadRobots.push(robot)
+        return
+      }
+      const survivedCollisions = handleCollisionEvents(game, robot)
+      if (!survivedCollisions) {
+        deadRobots.push(robot)
+      }
+    }
+  )
+  if (deadRobots.length === 0) {
+    return true
+  }
+  game.objects = game.objects.filter(
+    filters.some(
+      filters.not(
+        filters.byType('ai_robot')
+      ),
+      (robot) => deadRobots.every(
+        (deadRobot) => robot !== deadRobot
+      )
+    )
+  )
 }
 
 // moveRobots moves all robots. Returns a list of robots which just landed on
@@ -71,6 +98,18 @@ function moveRobots(game) {
       }
     )
   return movedRobots
+}
+
+// handleFieldEvent handles stuff on the field the robot is currently on.
+// Returns wether it survives.
+function handleFieldEvent(game, robot) {
+  return true
+}
+
+// handleCollisionEvents handles stuff on the field the robot will move to.
+// Returns wether it survives.
+function handleCollisionEvents(game, robot) {
+  return true
 }
 
 function produceRobots(game) {
