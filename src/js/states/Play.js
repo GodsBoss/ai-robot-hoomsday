@@ -205,6 +205,9 @@ function produceRobots(game) {
             }
           )
           replaceAmountMarker(game, source)
+          if (source.amount <= 0) {
+            source.frame = 1
+          }
         } else {
           source.waitTime--
         }
