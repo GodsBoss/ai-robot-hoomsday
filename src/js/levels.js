@@ -168,6 +168,108 @@ const levels = [
         direction: "down"
       }
     ]
+  },
+  {
+    id: "normal_arrows_1",
+    position: {
+      x: 100,
+      y: 40
+    },
+    tiles: [
+      {
+        type: "tile_source",
+        col: 2,
+        row: 6,
+        direction: "right",
+        amount: 3
+      },
+      {
+        type: "tile_sink",
+        col: 4,
+        row: 4,
+        amount: 1
+      },
+      {
+        type: "tile_block",
+        col: 4,
+        row: 2
+      },
+      {
+        type: "tile_sink",
+        col: 6,
+        row: 8,
+        amount: 1
+      },
+      {
+        type: "tile_block",
+        col: 6,
+        row: 10
+      },
+      {
+        type: "tile_sink",
+        col: 3,
+        row: 9,
+        amount: 1
+      },
+      {
+        type: "tile_block",
+        col: 3,
+        row: 8
+      },
+      {
+        type: "tile_block",
+        col: 3,
+        row: 10
+      },
+      {
+        type: "tile_block",
+        col: 12,
+        row: 6
+      },
+      {
+        type: "tile_block",
+        col: 17,
+        row: 6
+      },
+      {
+        type: "tile_start_stop",
+        col: 10,
+        row: 1
+      },
+      {
+        type: "tile_reset",
+        col: 11,
+        row: 1
+      },
+      {
+        type: "tile_exit",
+        col: 12,
+        row: 1
+      },
+      {
+        type: "tile_help",
+        col: 13,
+        row: 1
+      },
+      {
+        type: "tile_movable_arrow",
+        col: 12,
+        row: 10,
+        direction: "up"
+      },
+      {
+        type: "tile_movable_arrow",
+        col: 1,
+        row: 11,
+        direction: "down"
+      },
+      {
+        type: "tile_movable_arrow",
+        col: 8,
+        row: 2,
+        direction: "left"
+      }
+    ]
   }
 ]
 
