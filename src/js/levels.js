@@ -136,7 +136,7 @@ const levels = [
       {
         type: "tile_source",
         col: 2,
-        row: 2,
+        row: 3,
         amount: 3,
         direction: "right"
       },
@@ -170,6 +170,11 @@ const levels = [
         type: "tile_movable_block",
         col: 9,
         row: 6
+      },
+      {
+        type: "tile_block",
+        col: 3,
+        row: 5
       }
     ]
   }
