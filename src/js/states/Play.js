@@ -532,6 +532,7 @@ function startMoveTile(state, game, obj) {
       "tile_movable_arrow",
       "tile_movable_block",
       "tile_movable_bomb",
+      "tile_movable_stop",
       "tile_reset",
       "tile_sink",
       "tile_source",
