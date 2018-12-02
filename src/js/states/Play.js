@@ -103,7 +103,26 @@ function moveRobots(game) {
 // handleFieldEvent handles stuff on the field the robot is currently on.
 // Returns wether it survives.
 function handleFieldEvent(game, robot) {
-  return true
+  const tile = game.objects.find(
+    filters.every(
+      filters.byTypes(...Object.keys(fieldActions)),
+      byGridPosition(robot.col, robot.row)
+    )
+  )
+  if (typeof tile === 'undefined') { // Nothing special, everything is working perfectly fine.
+    return true
+  }
+  return fieldActions[tile.type](game, robot, tile)
+}
+
+const fieldActions = {
+  "tile_sink": (game, robot, tile) => {
+    tile.amount--
+    if (tile.amount <= 0) {
+      game.objects = game.objects.filter(filters.not(filters.is(tile)))
+    }
+    return false
+  }
 }
 
 // handleCollisionEvents handles stuff on the field the robot will move to.
