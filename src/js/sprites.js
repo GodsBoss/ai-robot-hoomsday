@@ -153,6 +153,15 @@ const sprites = [].concat(
       h: 16
     },
     {
+      type: 'tile_movable_arrow',
+      x: 160,
+      y: 16,
+      w: 16,
+      h: 16,
+      frames: 4,
+      dir: VERTICAL
+    },
+    {
       type: 'tile_movable_bomb',
       x: 64,
       y: 16,
