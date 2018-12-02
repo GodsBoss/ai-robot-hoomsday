@@ -21,52 +21,8 @@ export default class Play extends State {
   }
 
   tickRunning(game) {
-    game.objects.
-      filter(filters.byType('ai_robot')).
-      forEach(
-        (robot) => {
-          const dir = directions[robot.direction]
-          robot.x += dir.x * robotSpeedPerTick * 16
-          robot.y += dir.y * robotSpeedPerTick * 16
-          const dist = {
-            col: (robot.x - gridOffset.x) / 16 - robot.col - dir.x,
-            row: (robot.y - gridOffset.y) / 16 - robot.row - dir.y
-          }
-          if (Math.abs(dist.col + dist.row) <= robotSpeedPerTick * 1.01) {
-            setGridPosition(
-              robot,
-              {
-                col: robot.col + dir.x,
-                row: robot.row + dir.y
-              }
-            )
-          }
-        }
-      )
-    game.objects.
-      filter(filters.byType('tile_source')).
-      filter((source) => source.amount > 0).
-      forEach(
-        (source) => {
-          if (source.waitTime <= 0) {
-            source.amount--;
-            source.waitTime += 2 / robotSpeedPerTick;
-            game.objects.push(
-              {
-                type: 'ai_robot',
-                col: source.col,
-                row: source.row,
-                x: source.x,
-                y: source.y,
-                z: 3000,
-                direction: source.direction
-              }
-            )
-          } else {
-            source.waitTime--
-          }
-        }
-      )
+    tickRobots(game)
+    produceRobots(game)
   }
 
   invoke(game, event) {
@@ -81,6 +37,58 @@ export default class Play extends State {
       }
     }
   }
+}
+
+function tickRobots(game) {
+  game.objects.
+    filter(filters.byType('ai_robot')).
+    forEach(
+      (robot) => {
+        const dir = directions[robot.direction]
+        robot.x += dir.x * robotSpeedPerTick * 16
+        robot.y += dir.y * robotSpeedPerTick * 16
+        const dist = {
+          col: (robot.x - gridOffset.x) / 16 - robot.col - dir.x,
+          row: (robot.y - gridOffset.y) / 16 - robot.row - dir.y
+        }
+        if (Math.abs(dist.col + dist.row) <= robotSpeedPerTick * 1.01) {
+          setGridPosition(
+            robot,
+            {
+              col: robot.col + dir.x,
+              row: robot.row + dir.y
+            }
+          )
+        }
+      }
+    )
+}
+
+function produceRobots(game) {
+  game.objects.
+    filter(filters.byType('tile_source')).
+    filter((source) => source.amount > 0).
+    forEach(
+      (source) => {
+        if (source.waitTime <= 0) {
+          source.amount--;
+          source.waitTime += 2 / robotSpeedPerTick;
+          game.objects.push(
+            {
+              type: 'ai_robot',
+              col: source.col,
+              row: source.row,
+              x: source.x,
+              y: source.y,
+              z: 3000,
+              direction: source.direction
+            }
+          )
+        } else {
+          source.waitTime--
+        }
+      }
+    )
 }
 
 function copyTiles(tiles) {
