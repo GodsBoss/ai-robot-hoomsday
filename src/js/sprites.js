@@ -158,6 +158,15 @@ const sprites = [].concat(
       y: 16,
       w: 16,
       h: 16
+    },
+    {
+      type: 'help_cursor',
+      x: 216,
+      y: 21,
+      w: 14,
+      h: 17,
+      frames: 2,
+      direction: HORIZONTAL
     }
   ],
   createLetterSprites()
