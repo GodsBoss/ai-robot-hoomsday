@@ -579,6 +579,188 @@ const levels = [
         row: 4
       }
     ]
+  },
+  {
+    id: "tutorial_5_bomb",
+    position: {
+      x: 250,
+      y: 40
+    },
+    tiles: [
+      {
+        type: "tile_start_stop",
+        col: 16,
+        row: 0
+      },
+      {
+        type: "tile_reset",
+        col: 17,
+        row: 0
+      },
+      {
+        type: "tile_exit",
+        col: 16,
+        row: 1
+      },
+      {
+        type: "tile_help",
+        col: 17,
+        row: 1
+      },
+      {
+        type: "tile_source",
+        col: 14,
+        row: 3,
+        direction: "down",
+        amount: 5
+      },
+      {
+        type: "tile_block",
+        col: 14,
+        row: 9
+      },
+      {
+        type: "tile_sink",
+        col: 0,
+        row: 8,
+        amount: 1
+      },
+      {
+        type: "tile_block",
+        col: 0,
+        row: 7
+      },
+      {
+        type: "tile_block",
+        col: 0,
+        row: 9
+      },
+      {
+        type: "tile_block",
+        col: 11,
+        row: 0
+      },
+      {
+        type: "tile_block",
+        col: 11,
+        row: 1
+      },
+      {
+        type: "tile_block",
+        col: 11,
+        row: 2
+      },
+      {
+        type: "tile_block",
+        col: 11,
+        row: 3
+      },
+      {
+        type: "tile_block",
+        col: 11,
+        row: 4
+      },
+      {
+        type: "tile_block",
+        col: 11,
+        row: 5
+      },
+      {
+        type: "tile_block",
+        col: 11,
+        row: 6
+      },
+      {
+        type: "tile_cracked_block",
+        col: 11,
+        row: 7
+      },
+      {
+        type: "tile_cracked_block",
+        col: 11,
+        row: 8
+      },
+      {
+        type: "tile_cracked_block",
+        col: 11,
+        row: 9
+      },
+      {
+        type: "tile_block",
+        col: 11,
+        row: 10
+      },
+      {
+        type: "tile_block",
+        col: 11,
+        row: 11
+      },
+      {
+        type: "tile_cracked_block",
+        col: 9,
+        row: 7
+      },
+      {
+        type: "tile_cracked_block",
+        col: 9,
+        row: 8
+      },
+      {
+        type: "tile_cracked_block",
+        col: 9,
+        row: 9
+      },
+      {
+        type: "tile_cracked_block",
+        col: 7,
+        row: 7
+      },
+      {
+        type: "tile_cracked_block",
+        col: 7,
+        row: 8
+      },
+      {
+        type: "tile_cracked_block",
+        col: 7,
+        row: 9
+      },
+      {
+        type: "tile_cracked_block",
+        col: 5,
+        row: 7
+      },
+      {
+        type: "tile_cracked_block",
+        col: 5,
+        row: 8
+      },
+      {
+        type: "tile_cracked_block",
+        col: 5,
+        row: 9
+      },
+      {
+        type: "tile_movable_bomb",
+        col: 1,
+        row: 1
+      },
+      {
+        type: "tile_movable_bomb",
+        col: 3,
+        row: 1
+      },
+      {
+        type: "tile_movable_bomb",
+        col: 5,
+        row: 1
+      },
+      {
+        type: "tile_movable_bomb",
+        col: 7,
+        row: 1
+      }
+    ]
   }
 ]
 
