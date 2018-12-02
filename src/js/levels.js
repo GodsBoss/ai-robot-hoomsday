@@ -57,7 +57,7 @@ const levels = [
     ]
   },
   {
-    id: "second",
+    id: "tutorial_2_just_start",
     position: {
       x: 30,
       y: 40
@@ -66,18 +66,59 @@ const levels = [
       {
         type: "tile_exit",
         col: 2,
-        row: 2
+        row: 8
+      },
+      {
+        type: "tile_exit",
+        col: 15,
+        row: 8
       },
       {
         type: "tile_reset",
-        col: 3,
-        row: 2
+        col: 0,
+        row: 4
+      },
+      {
+        type: "tile_reset",
+        col: 13,
+        row: 7
       },
       {
         type: "tile_start_stop",
-        col: 4,
-        row: 2
-      }
+        col: 14,
+        row: 3
+      },
+      {
+        type: "tile_start_stop",
+        col: 17,
+        row: 6
+      },
+      {
+        type: "tile_source",
+        col: 2,
+        row: 2,
+        amount: 3,
+        direction: "down"
+      },
+      {
+        type: "tile_source",
+        col: 15,
+        row: 2,
+        amount: 3,
+        direction: "down"
+      },
+      {
+        type: "tile_sink",
+        col: 6,
+        row: 5,
+        amount: 2
+      },
+      {
+        type: "tile_sink",
+        col: 8,
+        row: 5,
+        amount: 4
+      },
     ]
   }
 ]
