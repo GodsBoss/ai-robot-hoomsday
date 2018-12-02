@@ -167,6 +167,15 @@ const sprites = [].concat(
       h: 17,
       frames: 2,
       direction: HORIZONTAL
+    },
+    {
+      type: 'move_marker',
+      x: 144,
+      y: 16,
+      w: 16,
+      h: 16,
+      frames: 2,
+      dir: VERTICAL
     }
   ],
   createLetterSprites()
