@@ -529,6 +529,7 @@ function startMoveTile(state, game, obj) {
       "tile_cracked_block",
       "tile_exit",
       "tile_help",
+      "tile_movable_arrow",
       "tile_movable_block",
       "tile_movable_bomb",
       "tile_reset",
