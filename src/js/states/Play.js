@@ -109,7 +109,42 @@ function handleFieldEvent(game, robot) {
 // handleCollisionEvents handles stuff on the field the robot will move to.
 // Returns wether it survives.
 function handleCollisionEvents(game, robot) {
-  return true
+  // This is run as long the robot collided with a block, survived and changed direction.
+  // To avoid endless loops, overflow protection is builtin.
+  for(let overFlowProtection = 0; overFlowProtection < 100; overFlowProtection++) {
+    const nextGridPosition = {
+      col: robot.col + directions[robot.direction].x,
+      row: robot.row + directions[robot.direction].y
+    }
+    const tile = game.objects.find(
+      filters.every(
+        filters.byTypes(...Object.keys(collisionActions)),
+        byGridPosition(nextGridPosition.col, nextGridPosition.row)
+      )
+    )
+    if (typeof tile === 'undefined') { // No collision
+      return true
+    }
+    const result = collisionActions[tile.type](game, robot)
+    if (!result.survived) { // Robot dead
+      return false
+    }
+    if (!result.changedDirection) { // Direction did not change
+      return true
+    }
+  }
+  console.log('handleCollisionEvents: overflow') // 100 collisions are *not* planned!
+  return false
+}
+
+const collisionActions = {
+  "tile_block": (game, robot) => {
+    robot.direction = obstacleCollisionTurns[robot.direction]
+    return {
+      survived: true,
+      changedDirection: true
+    }
+  }
 }
 
 function produceRobots(game) {
@@ -262,10 +297,10 @@ const directions = {
 // obstacleCollisionTurns contains the change in direction when robot runs against
 // an obstacle.
 const obstacleCollisionTurns = {
-  right: down,
-  down: left,
-  left: up,
-  up: right
+  right: "down",
+  down: "left",
+  left: "up",
+  up: "right"
 }
 
 // byGridPosition returns a filter for objects which filters them by grid position.
