@@ -1,6 +1,6 @@
 const levels = [
   {
-    id: "first",
+    id: "tutorial_1_just_start",
     position: {
       x: 10,
       y: 40
