@@ -94,6 +94,15 @@ const sprites = [].concat(
       dir: VERTICAL
     },
     {
+      type: "tile_help",
+      x: 112,
+      y: 16,
+      w: 16,
+      h: 16,
+      frames: 2,
+      dir: VERTICAL
+    },
+    {
       type: "tile_direction_up",
       x: 0,
       y: 48,
