@@ -287,6 +287,7 @@ function tilesToObjects(game) {
   game.data.playing.tiles.forEach(
     (tile) => {
       const obj = {
+        source: tile,
         type: tile.type,
         w: 16,
         h: 16,
@@ -354,6 +355,10 @@ function replaceAmountMarker(game, obj) {
 const clickActions = {
   "move_marker": (state, game, obj) => {
     setGridPosition(game.data.playing.chosenForMove, obj)
+    if (typeof game.data.playing.chosenForMove.source !== 'undefined') {
+      game.data.playing.chosenForMove.source.col = obj.col
+      game.data.playing.chosenForMove.source.row = obj.row
+    }
     removeMoveMarkers(game)
     delete game.data.playing.chosenForMove
     xableClickables(game, true)
