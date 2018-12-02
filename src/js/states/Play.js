@@ -311,6 +311,10 @@ function setGridPosition(object, pos) {
 }
 
 const createTile = {
+  "tile_movable_arrow": (game, tile, obj) => {
+    obj.direction = tile.direction
+    obj.frame = arrowFrames[obj.direction]
+  },
   "tile_source": (game, tile, obj) => {
     game.objects.push(
       {
@@ -331,6 +335,13 @@ const createTile = {
     obj.amount = tile.amount
     replaceAmountMarker(game, obj)
   }
+}
+
+const arrowFrames = {
+  "up": 0,
+  "right": 1,
+  "down": 2,
+  "left": 3
 }
 
 function replaceAmountMarker(game, obj) {
