@@ -259,6 +259,15 @@ const directions = {
   }
 }
 
+// obstacleCollisionTurns contains the change in direction when robot runs against
+// an obstacle.
+const obstacleCollisionTurns = {
+  right: down,
+  down: left,
+  left: up,
+  up: right
+}
+
 // byGridPosition returns a filter for objects which filters them by grid position.
 function byGridPosition(col, row) {
   return (tile) => typeof tile.col === 'number' && typeof tile.row === 'number' && tile.col === col && tile.row === row
