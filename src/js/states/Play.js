@@ -394,7 +394,10 @@ const clickActions = {
       }
     )
   },
+  "tile_movable_arrow": startMoveTile,
   "tile_movable_block": startMoveTile,
+  "tile_movable_bomb": startMoveTile,
+  "tile_movable_stop": startMoveTile,
   "tile_reset": (state, game, obj) => {
     if (obj.frame !== 1) {
       initLevel(game, state.levels[game.data.levelToPlay])
