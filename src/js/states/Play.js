@@ -352,6 +352,10 @@ function replaceAmountMarker(game, obj) {
 }
 
 const clickActions = {
+  "move_marker": (state, game, obj) => {
+    setGridPosition(game.data.playing.chosenForMove, obj)
+    removeMoveMarkers(game)
+  },
   "tile_exit": (state, game, obj) => {
     if (obj.frame !== 1) {
       game.nextState('title')
@@ -383,6 +387,7 @@ const clickActions = {
       }
     )
   },
+  "tile_movable_block": moveTile,
   "tile_reset": (state, game, obj) => {
     if (obj.frame !== 1) {
       initLevel(game, state.levels[game.data.levelToPlay])
@@ -405,6 +410,47 @@ const clickActions = {
     }
     game.data.playing.running = !game.data.playing.running
   }
+}
+
+function moveTile(state, game, obj) {
+  if (game.data.playing.running) {
+    return
+  }
+  const occupyingTiles = game.objects.filter(
+    filters.byTypes(
+      "tile_block",
+      "tile_exit",
+      "tile_help",
+      "tile_movable_block",
+      "tile_movable_bomb",
+      "tile_reset",
+      "tile_sink",
+      "tile_source",
+      "tile_start_stop"
+    )
+  )
+  for(let col = 0; col < 18; col++) {
+    for(let row = 0; row < 12; row++) {
+      if (typeof occupyingTiles.find(byGridPosition(col, row)) !== 'undefined') {
+        continue
+      }
+
+      const marker = {
+        type: 'move_marker',
+        w: 16,
+        h: 16,
+        z: 20000,
+        frame: 0
+      }
+      setGridPosition(marker, { col, row })
+      game.objects.push(marker)
+    }
+  }
+  game.data.playing.chosenForMove = obj
+}
+
+function removeMoveMarkers(game) {
+  game.objects = game.objects.filter(filters.not(filters.byType('move_marker')))
 }
 
 const gridOffset = {
