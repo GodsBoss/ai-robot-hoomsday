@@ -186,6 +186,14 @@ const fieldActions = {
           z: 10000
         }
       )
+      game.objects.push(
+        {
+          type: 'fx_robot_wreck',
+          x: robot.x,
+          y: robot.y,
+          z: 2000
+        }
+      )
       return false
     }
   ),
