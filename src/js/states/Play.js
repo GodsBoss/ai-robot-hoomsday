@@ -153,6 +153,15 @@ function handleCollisionEvents(game, robot) {
       col: robot.col + directions[robot.direction].x,
       row: robot.row + directions[robot.direction].y
     }
+    if (
+      nextGridPosition.col == -1 ||
+      nextGridPosition.row == -1 ||
+      nextGridPosition.col == 18 ||
+      nextGridPosition.row == 12
+    ) {
+      collisionActions['tile_block'](game, robot)
+      continue
+    }
     const tile = game.objects.find(
       filters.every(
         filters.byTypes(...Object.keys(collisionActions)),
