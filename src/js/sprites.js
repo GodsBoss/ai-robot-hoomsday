@@ -135,6 +135,13 @@ const sprites = [].concat(
       y: 64,
       w: 16,
       h: 16
+    },
+    {
+      type: 'item_bomb',
+      x: 64,
+      y: 16,
+      w: 16,
+      h: 16
     }
   ],
   createLetterSprites()
