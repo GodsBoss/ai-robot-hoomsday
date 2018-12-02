@@ -117,9 +117,12 @@ function handleFieldEvent(game, robot) {
 
 const fieldActions = {
   "tile_sink": (game, robot, tile) => {
+    if (tile.amount <= 0) {
+      return true
+    }
     tile.amount--
     if (tile.amount <= 0) {
-      game.objects = game.objects.filter(filters.not(filters.is(tile)))
+      tile.frame = 1
     }
     return false
   }
