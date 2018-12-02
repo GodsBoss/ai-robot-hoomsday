@@ -492,6 +492,93 @@ const levels = [
         row: 8
       }
     ]
+  },
+  {
+    id: "normal_stop_2",
+    position: {
+      x: 220,
+      y: 40
+    },
+    tiles: [
+      {
+        type: "tile_start_stop",
+        col: 12,
+        row: 2
+      },
+      {
+        type: "tile_reset",
+        col: 12,
+        row: 3
+      },
+      {
+        type: "tile_exit",
+        col: 12,
+        row: 4
+      },
+      {
+        type: "tile_help",
+        col: 12,
+        row: 5
+      },
+      {
+        type: "tile_source",
+        col: 4,
+        row: 2,
+        direction: "down",
+        amount: 4
+      },
+      {
+        type: "tile_block",
+        col: 3,
+        row: 11
+      },
+      {
+        type: "tile_sink",
+        col: 6,
+        row: 4,
+        amount: 2
+      },
+      {
+        type: "tile_block",
+        col: 0,
+        row: 5
+      },
+      {
+        type: "tile_block",
+        col: 3,
+        row: 0
+      },
+      {
+        type: "tile_block",
+        col: 5,
+        row: 0
+      },
+      {
+        type: "tile_block",
+        col: 5,
+        row: 1
+      },
+      {
+        type: "tile_block",
+        col: 5,
+        row: 2
+      },
+      {
+        type: "tile_movable_stop",
+        col: 4,
+        row: 4
+      },
+      {
+        type: "tile_movable_stop",
+        col: 3,
+        row: 4
+      },
+      {
+        type: "tile_movable_stop",
+        col: 5,
+        row: 4
+      }
+    ]
   }
 ]
 
