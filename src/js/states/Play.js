@@ -274,16 +274,24 @@ const createTile = {
 
 const clickActions = {
   "tile_exit": (state, game, obj) => {
-    game.nextState('title')
+    if (obj.frame !== 1) {
+      game.nextState('title')
+    }
   },
   "tile_reset": (state, game, obj) => {
-    initLevel(game, state.levels[game.data.levelToPlay])
+    if (obj.frame !== 1) {
+      initLevel(game, state.levels[game.data.levelToPlay])
+    }
   },
   "tile_start_stop": (state, game, obj) => {
     if (game.data.playing.running) {
       tilesToObjects(game)
     } else {
-      obj.frame = 1
+      game.objects.
+        filter(filters.byTypes("tile_exit", "tile_reset", "tile_start_stop")).
+        forEach(
+          (tile) => tile.frame = 1
+        )
     }
     game.data.playing.running = !game.data.playing.running
   }
