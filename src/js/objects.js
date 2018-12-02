@@ -24,6 +24,8 @@ export const filters = {
   byTypes: (...types) => (obj) => types.some((type) => type === obj.type),
   // every takes other predicates and creates a conjunctional filter, essentially creating the intersection of the filtered results.
   every: (...predicates) => (obj) => predicates.every((pred) => pred(obj)),
+  // is filters for a specific object.
+  is: (pivot) => (obj) => pivot === obj,
   // not negates another predicate.
   not: (predicate) => (obj) => !predicate(obj),
   // every takes other predicates and creates a disjunctional filter, essentialy creating the union of the filtered results.
