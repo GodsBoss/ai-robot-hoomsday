@@ -125,6 +125,53 @@ const levels = [
         amount: 4
       },
     ]
+  },
+  {
+    id: "tutorial_3_movable_block",
+    position: {
+      x: 50,
+      y: 40
+    },
+    tiles: [
+      {
+        type: "tile_source",
+        col: 2,
+        row: 2,
+        amount: 3,
+        direction: "right"
+      },
+      {
+        type: "tile_start_stop",
+        col: 7,
+        row: 3
+      },
+      {
+        type: "tile_reset",
+        col: 8,
+        row: 3
+      },
+      {
+        type: "tile_exit",
+        col: 9,
+        row: 3
+      },
+      {
+        type: "tile_help",
+        col: 10,
+        row: 3
+      },
+      {
+        type: "tile_sink",
+        col: 3,
+        row: 7,
+        amount: 3
+      },
+      {
+        type: "tile_movable_block",
+        col: 9,
+        row: 6
+      }
+    ]
   }
 ]
 
