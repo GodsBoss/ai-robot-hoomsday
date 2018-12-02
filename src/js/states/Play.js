@@ -387,7 +387,7 @@ const clickActions = {
       }
     )
   },
-  "tile_movable_block": moveTile,
+  "tile_movable_block": startMoveTile,
   "tile_reset": (state, game, obj) => {
     if (obj.frame !== 1) {
       initLevel(game, state.levels[game.data.levelToPlay])
@@ -416,7 +416,7 @@ function xableClickables(game, frame) {
     )
 }
 
-function moveTile(state, game, obj) {
+function startMoveTile(state, game, obj) {
   if (game.data.playing.running) {
     return
   }
