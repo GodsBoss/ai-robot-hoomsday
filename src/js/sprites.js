@@ -19,13 +19,22 @@ const sprites = [].concat(
       dir: VERTICAL
     },
     {
-      type: "level_select_level", // TODO: Real level icons
-      x: 64,
-      y: 64,
-      w: 16,
-      h: 16,
-      frames: 2,
-      dir: HORIZONTAL
+      type: "level_select_level",
+      x: 274,
+      y: 39,
+      w: 22,
+      h: 19,
+      frames: 6,
+      dir: VERTICAL
+    },
+    {
+      type: "level_select_level_active",
+      x: 296,
+      y: 39,
+      w: 22,
+      h: 19,
+      frames: 6,
+      dir: VERTICAL
     },
     {
       type: "level_select_start", // TODO: Real start button

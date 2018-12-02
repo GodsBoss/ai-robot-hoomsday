@@ -23,10 +23,11 @@ export default class LevelSelect extends State {
           {
             type: "level_select_level",
             frame: 0,
+            animation: Math.floor(Math.random() * 5),
             x: level.position.x,
             y: level.position.y,
-            w: 16,
-            h: 16,
+            w: 39,
+            h: 22,
             z: 1000,
             levelIndex: index
           }
@@ -39,15 +40,15 @@ export default class LevelSelect extends State {
     if (event.type === 'click') {
       const clickedObj = game.objects.find(
         filters.every(
-          filters.some(
-            filters.byType('level_select_level'),
-            filters.byType('level_select_start')
-          ),
+          filters.byTypes('level_select_level', 'level_select_level_active', 'level_select_start'),
           filters.byPosition(event)
         )
       )
       if (typeof clickedObj === 'undefined') {
         unselectLevel(game)
+        return
+      }
+      if (clickedObj.type === 'level_select_level_active') {
         return
       }
       if (clickedObj.type === 'level_select_level') {
@@ -59,11 +60,37 @@ export default class LevelSelect extends State {
       }
     }
   }
+
+  tick(game) {
+    game.objects.
+      filter(filters.byTypes('level_select_level', 'level_select_level_active')).
+      forEach(
+        (l) => {
+          l.animation++
+          if (l.animation >= 5) {
+            l.animation = 0
+            l.frame = (l.frame + 1) % 6
+          }
+        }
+      )
+  }
 }
 
 function selectLevel(game, clickedLevel) {
   unselectLevel(game)
-  clickedLevel.frame = 1
+  game.objects.push(
+    {
+      type: 'level_select_level_active',
+      x: clickedLevel.x,
+      y: clickedLevel.y,
+      w: 22,
+      h: 19,
+      z: 1000,
+      frame: 0,
+      animation: 0,
+      levelIndex: clickedLevel.levelIndex
+    }
+  )
   game.objects.push(
     {
       type: 'level_select_start',
@@ -75,11 +102,29 @@ function selectLevel(game, clickedLevel) {
       levelIndex: clickedLevel.levelIndex
     }
   )
+  game.objects = game.objects.filter(filters.not(filters.is(clickedLevel)))
 }
 
 function unselectLevel(game) {
   game.objects.
-    filter(filters.byType('level_select_level')).
-    forEach((level) => level.frame = 0)
+    filter(filters.byType('level_select_level_active')).
+    forEach(
+      (l) => {
+        game.objects.push(
+          {
+            type: 'level_select_level',
+            x: l.x,
+            y: l.y,
+            w: 22,
+            h: 19,
+            z: 1000,
+            frame: 0,
+            animation: 0,
+            levelIndex: l.levelIndex
+          }
+        )
+      }
+    )
+  game.objects = game.objects.filter(filters.not(filters.byType('level_select_level_active')))
   game.objects = game.objects.filter(filters.not(filters.byType('level_select_start')))
 }

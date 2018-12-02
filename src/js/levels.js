@@ -64,7 +64,7 @@ const levels = [
   {
     id: "tutorial_2_just_start",
     position: {
-      x: 30,
+      x: 40,
       y: 40
     },
     tiles: [
@@ -129,7 +129,7 @@ const levels = [
   {
     id: "tutorial_3_movable_block",
     position: {
-      x: 50,
+      x: 70,
       y: 40
     },
     tiles: [
