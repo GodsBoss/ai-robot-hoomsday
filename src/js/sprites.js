@@ -20,8 +20,8 @@ const sprites = [].concat(
     },
     {
       type: "level_select_level", // TODO: Real level icons
-      x: 32,
-      y: 16,
+      x: 64,
+      y: 64,
       w: 16,
       h: 16,
       frames: 2,
@@ -29,8 +29,8 @@ const sprites = [].concat(
     },
     {
       type: "level_select_start", // TODO: Real start button
-      x: 16,
-      y: 16,
+      x: 80,
+      y: 64,
       w: 16,
       h: 16
     },
@@ -57,11 +57,11 @@ const sprites = [].concat(
     },
     {
       type: "tile_start_stop",
-      x: 32,
-      y: 16,
+      x: 64,
+      y: 64,
       w: 16,
       h: 16,
-      frames: 2,
+      frames: 3,
       dir: HORIZONTAL
     },
     {
