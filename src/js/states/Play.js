@@ -226,6 +226,7 @@ const collisionActions = {
   "tile_help": simpleObstacleCollision,
   "tile_movable_block": simpleObstacleCollision,
   "tile_reset": simpleObstacleCollision,
+  "tile_robot_block": simpleObstacleCollision,
   "tile_start_stop": simpleObstacleCollision
 }
 
