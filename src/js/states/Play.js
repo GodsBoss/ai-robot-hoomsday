@@ -153,6 +153,12 @@ function handleFieldEvent(game, robot) {
 }
 
 const fieldActions = {
+  "tile_movable_arrow": removeAfterUse(
+    (game, robot, tile) => {
+      robot.direction = tile.direction
+      return true
+    }
+  ),
   "tile_sink": (game, robot, tile) => {
     if (tile.amount <= 0) {
       return true
@@ -163,6 +169,14 @@ const fieldActions = {
       tile.frame = 1
     }
     return false
+  }
+}
+
+function removeAfterUse(fieldAction) {
+  return (game, robot, tile) => {
+    const result = fieldAction(game, robot, tile)
+    game.objects = game.objects.filter(filters.not(filters.is(tile)))
+    return result
   }
 }
 
