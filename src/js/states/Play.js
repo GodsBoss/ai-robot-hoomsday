@@ -526,6 +526,7 @@ function startMoveTile(state, game, obj) {
   const occupyingTiles = game.objects.filter(
     filters.byTypes(
       "tile_block",
+      "tile_cracked_block",
       "tile_exit",
       "tile_help",
       "tile_movable_block",
