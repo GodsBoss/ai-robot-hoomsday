@@ -184,12 +184,14 @@ function handleCollisionEvents(game, robot) {
 }
 
 const collisionActions = {
-  "tile_block": (game, robot) => {
-    robot.direction = obstacleCollisionTurns[robot.direction]
-    return {
-      survived: true,
-      changedDirection: true
-    }
+  "tile_block": simpleObstacleCollision
+}
+
+function simpleObstacleCollision(game, robot) {
+  robot.direction = obstacleCollisionTurns[robot.direction]
+  return {
+    survived: true,
+    changedDirection: true
   }
 }
 
