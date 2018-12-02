@@ -192,6 +192,13 @@ const sprites = [].concat(
       h: 16,
       frames: 2,
       dir: VERTICAL
+    },
+    {
+      type: 'tile_robot_block',
+      x: 16,
+      y: 64,
+      w: 16,
+      h: 16
     }
   ],
   createLetterSprites()
