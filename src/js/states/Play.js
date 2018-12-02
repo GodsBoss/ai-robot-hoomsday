@@ -396,10 +396,19 @@ function setGridPosition(object, pos) {
 
 const createTile = {
   "tile_movable_arrow": (game, tile, obj) => {
+    if (typeof tile.direction === 'undefined') {
+      throw new Error("Missing direction for movable arrow tile")
+    }
     obj.direction = tile.direction
     obj.frame = arrowFrames[obj.direction]
   },
   "tile_source": (game, tile, obj) => {
+    if (typeof tile.amount !== 'number') {
+      throw new Error("Missing amount for source tile")
+    }
+    if (typeof tile.direction === 'undefined') {
+      throw new Error("Missing direction for source tile")
+    }
     game.objects.push(
       {
         type: `tile_direction_${tile.direction}`,
@@ -416,6 +425,9 @@ const createTile = {
     replaceAmountMarker(game, obj)
   },
   "tile_sink": (game, tile, obj) => {
+    if (typeof tile.amount !== 'number') {
+      throw new Error("Missing amount for sink tile")
+    }
     obj.amount = tile.amount
     replaceAmountMarker(game, obj)
   }
