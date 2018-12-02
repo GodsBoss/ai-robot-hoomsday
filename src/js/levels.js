@@ -12,11 +12,6 @@ const levels = [
         row: 1
       },
       {
-        type: "tile_reset",
-        col: 14,
-        row: 2
-      },
-      {
         type: "tile_start_stop",
         col: 14,
         row: 3
@@ -77,16 +72,6 @@ const levels = [
         type: "tile_exit",
         col: 15,
         row: 8
-      },
-      {
-        type: "tile_reset",
-        col: 0,
-        row: 4
-      },
-      {
-        type: "tile_reset",
-        col: 13,
-        row: 7
       },
       {
         type: "tile_start_stop",
