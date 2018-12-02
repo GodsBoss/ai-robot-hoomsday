@@ -272,6 +272,7 @@ function handleCollisionEvents(game, robot) {
 
 const collisionActions = {
   "tile_block": simpleObstacleCollision,
+  "tile_cracked_block": simpleObstacleCollision,
   "tile_exit": simpleObstacleCollision,
   "tile_help": simpleObstacleCollision,
   "tile_movable_block": simpleObstacleCollision,
