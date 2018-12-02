@@ -199,6 +199,15 @@ const sprites = [].concat(
       y: 64,
       w: 16,
       h: 16
+    },
+    {
+      type: 'fx_explosion',
+      x: 0,
+      y: 80,
+      w: 48,
+      h: 48,
+      frames: 4,
+      dir: HORIZONTAL
     }
   ],
   createLetterSprites()
