@@ -122,7 +122,7 @@ const levels = [
     ]
   },
   {
-    id: "tutorial_3_movable_block",
+    id: "tutorial_3_arrow_and_reset",
     position: {
       x: 70,
       y: 40
@@ -130,46 +130,42 @@ const levels = [
     tiles: [
       {
         type: "tile_source",
-        col: 2,
-        row: 3,
-        amount: 3,
+        col: 4,
+        row: 4,
+        amount: 1,
         direction: "right"
       },
       {
         type: "tile_start_stop",
         col: 7,
-        row: 3
+        row: 8
       },
       {
         type: "tile_reset",
         col: 8,
-        row: 3
+        row: 8
       },
       {
         type: "tile_exit",
         col: 9,
-        row: 3
+        row: 8
       },
       {
         type: "tile_help",
         col: 10,
-        row: 3
+        row: 8
       },
       {
         type: "tile_sink",
-        col: 3,
-        row: 7,
-        amount: 3
+        col: 6,
+        row: 6,
+        amount: 1
       },
       {
-        type: "tile_movable_block",
+        type: "tile_movable_arrow",
         col: 9,
-        row: 6
-      },
-      {
-        type: "tile_block",
-        col: 3,
-        row: 5
+        row: 6,
+        direction: "down"
       }
     ]
   }
