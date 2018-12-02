@@ -356,6 +356,7 @@ const clickActions = {
     setGridPosition(game.data.playing.chosenForMove, obj)
     removeMoveMarkers(game)
     delete game.data.playing.chosenForMove
+    xableClickables(game, true)
   },
   "tile_exit": (state, game, obj) => {
     if (obj.frame !== 1) {
@@ -394,27 +395,35 @@ const clickActions = {
       initLevel(game, state.levels[game.data.levelToPlay])
     }
   },
-  "tile_start_stop": (state, game, obj) => {
+  "tile_start_stop": (state, game, obj) => 
     if (game.data.playing.running) {
       tilesToObjects(game)
+    } else if(obj.frame !== 2) {
+      xableClickables(game, false, true)
     } else {
-      xableClickables(game, 1)
+      return
     }
     game.data.playing.running = !game.data.playing.running
   }
 }
 
-function xableClickables(game, frame) {
+function xableClickables(game, enabled, running) {
   game.objects.
     filter(filters.byTypes(
       "tile_exit",
       "tile_help",
-      "tile_reset",
-      "tile_start_stop"
+      "tile_reset"
     )).
     forEach(
-      (tile) => tile.frame = frame
+      (tile) => tile.frame = enabled ? 0 : 1
     )
+    game.objects.
+      filter(filters.byType(
+        "tile_start_stop"
+      )).
+      forEach(
+        (tile) => tile.frame = enabled ? 0 : (running ? 1 : 2)
+      )
 }
 
 function startMoveTile(state, game, obj) {
@@ -427,6 +436,7 @@ function startMoveTile(state, game, obj) {
     delete game.data.playing.chosenForMove
     return
   }
+  xableClickables(game, false, false)
   const occupyingTiles = game.objects.filter(
     filters.byTypes(
       "tile_block",
