@@ -37,11 +37,13 @@ const sprites = [].concat(
       dir: VERTICAL
     },
     {
-      type: "level_select_start", // TODO: Real start button
-      x: 80,
-      y: 64,
-      w: 16,
-      h: 16
+      type: "level_select_start",
+      x: 200,
+      y: 50,
+      w: 20,
+      h: 20,
+      frames: 4,
+      dir: VERTICAL
     },
     {
       type: "tile_ground",

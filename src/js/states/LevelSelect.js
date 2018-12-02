@@ -63,17 +63,23 @@ export default class LevelSelect extends State {
 
   tick(game) {
     game.objects.
-      filter(filters.byTypes('level_select_level', 'level_select_level_active')).
+      filter(filters.byTypes('level_select_level', 'level_select_level_active', 'level_select_start')).
       forEach(
         (l) => {
           l.animation++
           if (l.animation >= 5) {
             l.animation = 0
-            l.frame = (l.frame + 1) % 6
+            l.frame = (l.frame + 1) % animationFrames[l.type]
           }
         }
       )
   }
+}
+
+const animationFrames = {
+  "level_select_level": 6,
+  "level_select_level_active": 6,
+  "level_select_start": 4
 }
 
 function selectLevel(game, clickedLevel) {
@@ -99,6 +105,8 @@ function selectLevel(game, clickedLevel) {
       w: 16,
       h: 16,
       z: 1000,
+      frame: 0,
+      animation: 0,
       levelIndex: clickedLevel.levelIndex
     }
   )
