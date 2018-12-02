@@ -395,7 +395,7 @@ const clickActions = {
       initLevel(game, state.levels[game.data.levelToPlay])
     }
   },
-  "tile_start_stop": (state, game, obj) => 
+  "tile_start_stop": (state, game, obj) => {
     if (game.data.playing.running) {
       tilesToObjects(game)
     } else if(obj.frame !== 2) {
