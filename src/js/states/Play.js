@@ -397,19 +397,23 @@ const clickActions = {
     if (game.data.playing.running) {
       tilesToObjects(game)
     } else {
-      game.objects.
-        filter(filters.byTypes(
-          "tile_exit",
-          "tile_help",
-          "tile_reset",
-          "tile_start_stop"
-        )).
-        forEach(
-          (tile) => tile.frame = 1
-        )
+      xableClickables(game, 1)
     }
     game.data.playing.running = !game.data.playing.running
   }
+}
+
+function xableClickables(game, frame) {
+  game.objects.
+    filter(filters.byTypes(
+      "tile_exit",
+      "tile_help",
+      "tile_reset",
+      "tile_start_stop"
+    )).
+    forEach(
+      (tile) => tile.frame = frame
+    )
 }
 
 function moveTile(state, game, obj) {
