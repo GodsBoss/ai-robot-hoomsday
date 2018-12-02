@@ -109,6 +109,16 @@ const levels = [
         row: 5,
         amount: 4
       },
+      {
+        type: "tile_block",
+        col: 0,
+        row: 4
+      },
+      {
+        type: "tile_block",
+        col: 13,
+        row: 7
+      }
     ]
   },
   {
