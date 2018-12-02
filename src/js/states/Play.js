@@ -159,6 +159,16 @@ const fieldActions = {
       return true
     }
   ),
+  "tile_movable_stop": removeAfterUse(
+    (game, robot, tile) => {
+      const block = {
+        type: 'tile_robot_block',
+      }
+      setGridPosition(block, robot)
+      game.objects.push(block)
+      return false
+    }
+  ),
   "tile_sink": (game, robot, tile) => {
     if (tile.amount <= 0) {
       return true
