@@ -270,6 +270,116 @@ const levels = [
         direction: "left"
       }
     ]
+  },
+  {
+    id: "normal_arrows_2",
+    position: {
+      x: 130,
+      y: 40
+    },
+    tiles: [
+      {
+        type: "tile_block",
+        col: 1,
+        row: 1
+      },
+      {
+        type: "tile_source",
+        col: 0,
+        row: 3,
+        direction: "right",
+        amount: 3
+      },
+      {
+        type: "tile_block",
+        col: 0,
+        row: 4
+      },
+      {
+        type: "tile_sink",
+        col: 3,
+        row: 5,
+        amount: 2
+      },
+      {
+        type: "tile_block",
+        col: 5,
+        row: 5
+      },
+      {
+        type: "tile_sink",
+        col: 7,
+        row: 1,
+        amount: 3
+      },
+      {
+        type: "tile_source",
+        col: 10,
+        row: 4,
+        amount: 2,
+        direction: "left"
+      },
+      {
+        type: "tile_block",
+        col: 12,
+        row: 3
+      },
+      {
+        type: "tile_block",
+        col: 11,
+        row: 6
+      },
+      {
+        type: "tile_movable_arrow",
+        col: 3,
+        row: 3,
+        direction: "down"
+      },
+      {
+        type: "tile_movable_arrow",
+        col: 3,
+        row: 4,
+        direction: "down"
+      },
+      {
+        type: "tile_movable_arrow",
+        col: 7,
+        row: 3,
+        direction: "up"
+      },
+      {
+        type: "tile_movable_arrow",
+        col: 7,
+        row: 4,
+        direction: "up"
+      },
+      {
+        type: "tile_movable_arrow",
+        col: 11,
+        row: 3,
+        direction: "down"
+      },
+      {
+        type: "tile_start_stop",
+        col: 4,
+        row: 10
+      },
+      {
+        type: "tile_reset",
+        col: 5,
+        row: 10
+      },
+      {
+        type: "tile_exit",
+        col: 6,
+        row: 10
+      },
+      {
+        type: "tile_help",
+        col: 7,
+        row: 10
+      }
+    ]
   }
 ]
 
