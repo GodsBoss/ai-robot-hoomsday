@@ -160,6 +160,13 @@ const sprites = [].concat(
       h: 16
     },
     {
+      type: 'tile_movable_stop',
+      x: 128,
+      y: 32,
+      w: 16,
+      h: 16
+    },
+    {
       type: 'help_cursor',
       x: 216,
       y: 21,
