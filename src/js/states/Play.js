@@ -22,6 +22,7 @@ export default class Play extends State {
   }
 
   tickRunning(game) {
+    fadeExplosions(game)
     tickRobots(game)
     produceRobots(game)
     checkForVictory(game)
@@ -39,6 +40,20 @@ export default class Play extends State {
       }
     }
   }
+}
+
+function fadeExplosions(game) {
+  game.objects.filter(
+    filters.byType('fx_explosion')
+  ).forEach(
+    (explosion) => {
+      explosion.duration--
+      explosion.frame = Math.min(3, Math.round(3 * (explosionDuration - explosion.duration) / explosionDuration))
+      if (explosion.duration <= 0) {
+        game.objects = game.objects.filter(filters.not(filters.is(explosion)))
+      }
+    }
+  )
 }
 
 function fadeHelpCursors(game) {
@@ -159,6 +174,21 @@ const fieldActions = {
       return true
     }
   ),
+  "tile_movable_bomb": removeAfterUse(
+    (game, robot, tile) => {
+      game.objects.push(
+        {
+          type: 'fx_explosion',
+          x: robot.x - 16,
+          y: robot.y - 16,
+          duration: explosionDuration,
+          frame: 0,
+          z: 10000
+        }
+      )
+      return false
+    }
+  ),
   "tile_movable_stop": removeAfterUse(
     (game, robot, tile) => {
       const block = {
@@ -181,6 +211,8 @@ const fieldActions = {
     return false
   }
 }
+
+const explosionDuration = 25
 
 function removeAfterUse(fieldAction) {
   return (game, robot, tile) => {
