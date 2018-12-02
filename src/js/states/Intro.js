@@ -5,7 +5,7 @@ export default class Intro extends State {
   init(game) {
     game.objects.push(
       {
-        type: "bg_title",
+        type: "bg",
         x: 0,
         y: 0,
         w: 320,

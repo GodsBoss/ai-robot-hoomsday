@@ -3,9 +3,30 @@ import { HORIZONTAL, VERTICAL } from './SpriteAtlas'
 const sprites = [].concat(
   [
     {
-      type: "bg_title",
+      type: "bg",
       x: 320,
       y: 0,
+      w: 320,
+      h: 200
+    },
+    {
+      type: "screen_title",
+      x: 0,
+      y: 200,
+      w: 320,
+      h: 200
+    },
+    {
+      type: "screen_level_select",
+      x: 0,
+      y: 400,
+      w: 320,
+      h: 200
+    },
+    {
+      type: "screen_level_over",
+      x: 0,
+      y: 600,
       w: 320,
       h: 200
     },
