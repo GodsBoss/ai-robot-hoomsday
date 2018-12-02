@@ -208,6 +208,13 @@ const sprites = [].concat(
       h: 48,
       frames: 4,
       dir: HORIZONTAL
+    },
+    {
+      type: 'fx_robot_wreck',
+      x: 32,
+      y: 64,
+      w: 16,
+      h: 16
     }
   ],
   createLetterSprites()
