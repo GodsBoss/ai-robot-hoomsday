@@ -40,6 +40,13 @@ export default class Play extends State {
 }
 
 function tickRobots(game) {
+  const movedRobots = moveRobots(game)
+}
+
+// moveRobots moves all robots. Returns a list of robots which just landed on
+// new grid fields.
+function moveRobots(game) {
+  const movedRobots = []
   game.objects.
     filter(filters.byType('ai_robot')).
     forEach(
@@ -59,9 +66,11 @@ function tickRobots(game) {
               row: robot.row + dir.y
             }
           )
+          movedRobots.push(robot)
         }
       }
     )
+  return movedRobots
 }
 
 function produceRobots(game) {
