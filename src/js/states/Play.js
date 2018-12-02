@@ -23,6 +23,7 @@ export default class Play extends State {
   tickRunning(game) {
     tickRobots(game)
     produceRobots(game)
+    checkForVictory(game)
   }
 
   invoke(game, event) {
@@ -36,6 +37,19 @@ export default class Play extends State {
         f(this, game, clickedObj)
       }
     }
+  }
+}
+
+function checkForVictory(game) {
+  if (
+    game.objects.filter(
+      filters.byType('tile_sink')
+    ).reduce(
+      (acc, tile) => acc + tile.amount,
+      0
+    ) == 0
+  ) {
+    game.nextState('level_over')
   }
 }
 
