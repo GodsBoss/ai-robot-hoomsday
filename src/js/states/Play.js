@@ -184,7 +184,10 @@ function handleCollisionEvents(game, robot) {
 }
 
 const collisionActions = {
-  "tile_block": simpleObstacleCollision
+  "tile_block": simpleObstacleCollision,
+  "tile_start_stop": simpleObstacleCollision,
+  "tile_exit": simpleObstacleCollision,
+  "tile_reset": simpleObstacleCollision
 }
 
 function simpleObstacleCollision(game, robot) {
